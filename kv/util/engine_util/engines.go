@@ -70,11 +70,11 @@ func CreateDB(path string, raft bool) *badger.DB {
 	opts.Dir = path
 	opts.ValueDir = opts.Dir
 	if err := os.MkdirAll(opts.Dir, os.ModePerm); err != nil {
-		log.Fatal(err)
+		log.Fatalf("[kv.util.engine_util.CreateDB] mkdir %s err: %s", opts.Dir, err)
 	}
 	db, err := badger.Open(opts)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("[kv.util.engine_util.CreateDB] badger.Open err: %s", err)
 	}
 	return db
 }

@@ -73,7 +73,9 @@ func (it *BadgerIterator) Item() DBItem {
 	}
 }
 
-func (it *BadgerIterator) Valid() bool { return it.iter.ValidForPrefix([]byte(it.prefix)) }
+func (it *BadgerIterator) Valid() bool {
+	return it.iter.ValidForPrefix([]byte(it.prefix))
+}
 
 func (it *BadgerIterator) ValidForPrefix(prefix []byte) bool {
 	return it.iter.ValidForPrefix(append(prefix, []byte(it.prefix)...))
